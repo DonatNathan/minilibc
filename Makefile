@@ -5,16 +5,18 @@
 ## It's my Makefile
 ##
 
-PP = g++
 src = src/strlen.asm	\
+	  src/strchr.asm	\
 
 NAME = libasm.so
 OBJ = ${src:.asm=.o}
 
-${NAME}:
-	@nasm -f elf64 ${src}
-	@ld -shared -o libasm.so src/*.o
+${NAME}: ${OBJ}
+	@ld -shared -o libasm.so ${OBJ}
 	@echo 'Files compiled'
+
+%.o: %.asm
+	@nasm -f elf64 -o $@ $<
 
 all : ${NAME}
 
