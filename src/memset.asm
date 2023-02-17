@@ -8,7 +8,7 @@ memset:
 
 .loop:
 	cmp byte [rdi + rcx], 0 ;If end of string
-	je .return
+	je .endset
 	cmp rcx, rdx ;If end of cmpt
 	je .endset
 	mov [rdi + rcx], sil ;Set value of second arg
@@ -17,10 +17,6 @@ memset:
 
 .endset:
 	mov rax, rdi ;Return string
-	ret
-
-.return:
-	mov rax, rax ;Return null
 	ret
 
 section .data
