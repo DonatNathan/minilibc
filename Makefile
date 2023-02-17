@@ -8,6 +8,7 @@
 src = src/strlen.asm	\
 	  src/strchr.asm	\
 	  src/strncmp.asm	\
+	  src/strrchr.asm	\
 	  src/memcpy.asm	\
 	  src/memmove.asm	\
 	  src/memset.asm	\
@@ -15,7 +16,6 @@ src = src/strlen.asm	\
 	  src/strcmp.asm	\
 	  src/strcspn.asm	\
 	  src/strpbrk.asm	\
-	  src/strrchr.asm	\
 	  src/strstr.asm	\
 
 NAME = libasm.so

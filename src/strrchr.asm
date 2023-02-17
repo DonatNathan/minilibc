@@ -1,34 +1,35 @@
 section .bss
 
+section .data
+
 section .text
 global strrchr
 
 strrchr:
-  push rbx
-  push rdi
-  push rsi
-  mov rbx, rax
-  mov rdi, rax
-  mov rsi, 0
+    xor rcx, rcx ;Set cmpt to 0
+    xor rax, rax
+    cmp sil, 0 ;If char is null
+    je .return
 
 .loop:
-  cmp byte [rdi], 0
-  je .return
-  inc rsi
-  cmp byte [rdi], dl
-  je .exist
-  inc rdi
-  jmp .loop
+    cmp BYTE [rdi + rcx], 0 ;If end of string
+    je .return
+    cmp BYTE [rdi + rcx], sil ;If char is found
+    je .set_cmpt
+    inc rcx ;Inc cmpt
+    jmp .loop
 
-.exist:
-  sub rdi, rbx
-  mov rax, rdi
-  jmp .return
+.set_cmpt:
+    mov rax, rcx ;Get pos of char
+    inc rcx
+    jmp .loop
+
+.got:
+    lea rax, [rdi + rax] ;Get end of string
+    ret
 
 .return:
-  pop rsi
-  pop rdi
-  pop rbx
-  ret
-
-section .data
+    cmp rax, 0 ;If char found
+    jne .got
+    xor rax, rax ;Return null
+    ret
