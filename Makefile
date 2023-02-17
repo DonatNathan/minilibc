@@ -7,13 +7,13 @@
 
 src = src/strlen.asm	\
 	  src/strchr.asm	\
+	  src/strncmp.asm	\
 	  src/memcpy.asm	\
 	  src/memmove.asm	\
 	  src/memset.asm	\
 	  src/strcasecmp.asm	\
 	  src/strcmp.asm	\
 	  src/strcspn.asm	\
-	  src/strncmp.asm	\
 	  src/strpbrk.asm	\
 	  src/strrchr.asm	\
 	  src/strstr.asm	\

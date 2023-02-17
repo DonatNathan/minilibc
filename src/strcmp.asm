@@ -3,7 +3,7 @@ section .bss
 section .text
 global strcmp
 
-strcmp:
-	ret
+;strcmp:
+;	ret
 
 section .data
