@@ -11,9 +11,9 @@ strchr:
     je .return
 
 .loop:
-    cmp BYTE [rdi + rcx], 0 ;If end of string
+    cmp byte [rdi + rcx], 0 ;If end of string
     je .return
-    cmp BYTE [rdi + rcx], sil ;If char is found
+    cmp byte [rdi + rcx], sil ;If char is found
     je .got
     inc rcx ;Inc cmpt
     jmp .loop
