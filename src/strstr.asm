@@ -5,6 +5,9 @@ global strstr
 
 strstr:
 	xor rcx, rcx
+	mov al, [rsi]
+	cmp al, 0
+	je .empty
 
 .loop:
 	cmp byte [rdi], 0
@@ -24,6 +27,10 @@ strstr:
 	inc rcx
 	inc rdi
 	jmp .compare
+
+.empty:
+	mov rax, rdi
+	ret
 
 .first:
 	mov rdx, rdi
