@@ -17,6 +17,12 @@ src = src/strlen.asm	\
 	  src/strcspn.asm	\
 	  src/strpbrk.asm	\
 	  src/strstr.asm	\
+	  src/ffs.asm	\
+	  src/syscall.asm	\
+	  src/strfry.asm	\
+	  src/memfrob.asm	\
+	  src/index.asm	\
+	  src/rindex.asm	\
 
 NAME = libasm.so
 OBJ = ${src:.asm=.o}
