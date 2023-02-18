@@ -1,7 +1,7 @@
 section .bss
 
 section .text
-global memmove
+global memfrob
 
 memfrob:
     ret

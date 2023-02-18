@@ -1,7 +1,7 @@
 section .bss
 
 section .text
-global memmove
+global syscall
 
 syscall:
     ret
