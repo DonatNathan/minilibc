@@ -30,8 +30,8 @@ Test (my_memcpy, empty_string)
     char *string1 = strdup("");
     char *string2 = strdup("");
     char *string3 = strdup("Toto");
-    memcpy(string1, string3, 1);
-    my_memcpy(string2, string3, 1);
+    memcpy(string1, string3, 5);
+    my_memcpy(string2, string3, 5);
     printf("String 1 first : '%s'\n", string1);
     printf("String 2 first : '%s'\n", string2);
     int result = strcmp(string1, string2);
@@ -50,8 +50,6 @@ Test (my_memcpy, empty_string2)
     char *string3 = strdup("");
     memcpy(string1, string3, 1);
     my_memcpy(string2, string3, 1);
-    printf("String 1 bis : '%s'\n", string1);
-    printf("String 2 bis : '%s'\n", string2);
     int result = strcmp(string1, string2);
     cr_assert_eq(0, result);
 }
