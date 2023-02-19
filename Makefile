@@ -53,7 +53,6 @@ run :
 
 tests_run: re
 	gcc tests/*.c -W -Iinclude -o unit_tests --coverage -lcriterion -L/libasm.so
-	mr_clean
 	./unit_tests
 
 .PHONY: re fclean clean all
