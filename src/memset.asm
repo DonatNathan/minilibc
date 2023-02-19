@@ -7,8 +7,8 @@ memset:
 	xor rcx, rcx ;Set cmpt to 0
 
 .loop:
-	cmp byte [rdi + rcx], 0 ;If end of string
-	je .endset
+	;cmp byte [rdi + rcx], 0 ;If end of string
+	;je .endset
 	cmp rcx, rdx ;If end of cmpt
 	je .endset
 	mov [rdi + rcx], sil ;Set value of second arg

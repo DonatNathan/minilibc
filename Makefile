@@ -52,7 +52,7 @@ run :
 	LD_PRELOAD=./libasm.so ./run
 
 tests_run: re
-	gcc tests/*.c -W -Wall -Iinclude -o unit_tests --coverage -lcriterion -L/libasm.so
+	gcc tests/*.c -W -Iinclude -o unit_tests --coverage -lcriterion -L/libasm.so
 	mr_clean
 	./unit_tests
 
