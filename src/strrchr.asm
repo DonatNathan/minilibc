@@ -7,7 +7,7 @@ global strrchr
 
 strrchr:
     xor rcx, rcx ;Set cmpt to 0
-    xor rax, rax
+    mov rax, -1
     cmp sil, 0 ;If char is null
     je .return
 
@@ -29,7 +29,7 @@ strrchr:
     ret
 
 .return:
-    cmp rax, 0 ;If char found
+    cmp rax, -1 ;If char found
     jne .got
     xor rax, rax ;Return null
     ret
