@@ -42,6 +42,7 @@ clean :
 fclean : clean
 	@rm -rf ${NAME}
 	@rm -rf run
+	@rm -rf unit_tests
 	@echo 'Executable deleted'
 
 re : fclean all
@@ -49,5 +50,10 @@ re : fclean all
 run :
 	@gcc main.c -o run -Wall -Werror
 	LD_PRELOAD=./libasm.so ./run
+
+tests_run: re
+	gcc tests/*.c -W -Wall -Iinclude -o unit_tests --coverage -lcriterion -L/libasm.so
+	mr_clean
+	./unit_tests
 
 .PHONY: re fclean clean all
