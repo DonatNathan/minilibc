@@ -9,7 +9,7 @@ strrchr:
     xor rcx, rcx ;Set cmpt to 0
     mov rax, -1
     cmp sil, 0 ;If char is null
-    je .return
+    je .nothing
 
 .loop:
     cmp byte [rdi + rcx], 0 ;If end of string
@@ -32,4 +32,14 @@ strrchr:
     cmp rax, -1 ;If char found
     jne .got
     xor rax, rax ;Return null
+    ret
+
+.nothing:
+    cmp byte [rdi], 0 ;If end of string
+    je .other_return
+    inc rdi
+    jmp .nothing
+
+.other_return:
+    mov rax, rdi
     ret

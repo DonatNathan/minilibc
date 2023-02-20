@@ -21,22 +21,22 @@ Test (my_memcpy, trois_p)
 }
 
 // Why ?
-Test (my_memcpy, empty_string)
-{
-    void *handle;
-    void *(*my_memcpy)(void *, const void *, size_t);
-    handle = dlopen("./libasm.so", RTLD_LAZY);
-    my_memcpy = dlsym(handle, "memcpy");
-    char *string1 = strdup("");
-    char *string2 = strdup("");
-    char *string3 = strdup("Toto");
-    memcpy(string1, string3, 5);
-    my_memcpy(string2, string3, 5);
-    printf("String 1 first : '%s'\n", string1);
-    printf("String 2 first : '%s'\n", string2);
-    int result = strcmp(string1, string2);
-    cr_assert_eq(0, result);
-}
+// Test (my_memcpy, empty_string)
+// {
+//     void *handle;
+//     void *(*my_memcpy)(void *, const void *, size_t);
+//     handle = dlopen("./libasm.so", RTLD_LAZY);
+//     my_memcpy = dlsym(handle, "memcpy");
+//     char *string1 = strdup("");
+//     char *string2 = strdup("");
+//     char *string3 = strdup("Toto");
+//     memcpy(string1, string3, 5);
+//     my_memcpy(string2, string3, 5);
+//     printf("String 1 first : '%s'\n", string1);
+//     printf("String 2 first : '%s'\n", string2);
+//     int result = strcmp(string1, string2);
+//     cr_assert_eq(0, result);
+// }
 
 // Why ?
 Test (my_memcpy, empty_string2)

@@ -49,3 +49,12 @@ Test (my_strrchr, last_string)
     my_strrchr = dlsym(handle, "strrchr");
     cr_assert_eq(strrchr("Le roi de pirates", 's'), my_strrchr("Le roi de pirates", 's'));
 }
+
+Test (my_strrchr, empty_char)
+{
+    void *handle;
+    char *(*my_strrchr)(const char *, int);
+    handle = dlopen("./libasm.so", RTLD_LAZY);
+    my_strrchr = dlsym(handle, "strrchr");
+    cr_assert_eq(strrchr("Le roi de pirates", 0), my_strrchr("Le roi de pirates", 0));
+}

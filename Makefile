@@ -55,4 +55,12 @@ tests_run: re
 	gcc tests/*.c -W -Iinclude -o unit_tests --coverage -lcriterion -L/libasm.so
 	./unit_tests
 
+test: re
+	clear
+	mr_clean
+	gcc tests/*.c -W -Iinclude -o unit_tests --coverage -lcriterion -L/libasm.so
+	./unit_tests
+	gcovr --exclude tests/
+	gcovr --exclude tests/ --branche
+
 .PHONY: re fclean clean all

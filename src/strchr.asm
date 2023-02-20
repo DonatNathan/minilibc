@@ -7,8 +7,8 @@ global strchr
 
 strchr:
     xor rcx, rcx ;Set cmpt to 0
-    cmp sil, 0 ;If char is null
-    je .return
+    cmp sil, 0
+    je .nothing
 
 .loop:
     cmp byte [rdi + rcx], 0 ;If end of string
@@ -24,4 +24,14 @@ strchr:
 
 .return:
     xor rax, rax ;Return null
+    ret
+
+.nothing:
+    cmp byte [rdi], 0 ;If end of string
+    je .other_return
+    inc rdi
+    jmp .nothing
+
+.other_return:
+    mov rax, rdi
     ret
