@@ -37,9 +37,8 @@ strcasecmp:
     cmp al, 0
     je .stop
     movzx rax, al
-    mov rbx, -1
-    mul rbx
-    mov rax, rbx
+    mov r8, -1
+    imul rax, r8
     ret
 
 .empty_second:
