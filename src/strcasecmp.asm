@@ -5,20 +5,13 @@ global strcasecmp
 
 strcasecmp:
 	xor rcx, rcx ;Set cmpt to 0
+.loop:
     mov al, [rsi + rcx]
     mov r8b, byte [rdi + rcx]
     cmp r8b, 0
     je .empty_first
     cmp al, 0
     je .empty_second
-
-.loop:
-    mov al, [rsi + rcx]
-    mov r8b, byte [rdi + rcx]
-    cmp r8b, 0
-    je .stop
-    cmp al, 0
-    je .stop_less
     cmp al, 'A'
     jge .snake_case_al
 

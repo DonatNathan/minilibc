@@ -20,8 +20,6 @@ Test (my_strcasecmp, empty_left)
     int (*my_strcasecmp)(const char *, const char *);
     handle = dlopen("./libasm.so", RTLD_LAZY);
     my_strcasecmp = dlsym(handle, "strcasecmp");
-    printf("Left 1 : '%d'\n", strcasecmp("", "Toto"));
-    printf("Left 2 : '%d'\n", my_strcasecmp("", "Toto"));
     cr_assert_eq(strcasecmp("", "Toto"), my_strcasecmp("", "Toto"));
 }
 
@@ -40,8 +38,6 @@ Test (my_strcasecmp, empty_left_a)
     int (*my_strcasecmp)(const char *, const char *);
     handle = dlopen("./libasm.so", RTLD_LAZY);
     my_strcasecmp = dlsym(handle, "strcasecmp");
-    printf("Left 1 : '%d'\n", strcasecmp("", "a"));
-    printf("Left 2 : '%d'\n", my_strcasecmp("", "a"));
     cr_assert_eq(strcasecmp("", "a"), my_strcasecmp("", "a"));
 }
 
@@ -70,4 +66,14 @@ Test (my_strcasecmp, diff_case)
     handle = dlopen("./libasm.so", RTLD_LAZY);
     my_strcasecmp = dlsym(handle, "strcasecmp");
     cr_assert_eq(strcasecmp("ToTo", "Toto"), my_strcasecmp("ToTo", "Toto"));
+}
+
+Test (my_strcasecmp, test_32)
+{
+    void *handle;
+    int (*my_strcasecmp)(const char *, const char *);
+    handle = dlopen("./libasm.so", RTLD_LAZY);
+    my_strcasecmp = dlsym(handle, "strcasecmp");
+    printf("Valid : '%d'\nInvalid : '%d'\n", strcasecmp("caw caw motherfuckers", "caw Caw"), my_strcasecmp("caw caw motherfuckers", "caw Caw"));
+    cr_assert_eq(strcasecmp("caw caw motherfuckers", "caw Caw"), my_strcasecmp("caw caw motherfuckers", "caw Caw"));
 }
