@@ -5,18 +5,19 @@ global strncmp
 
 strncmp:
 	xor rcx, rcx ;Set cmpt to 0
+    cmp rdx, 0
+    je .stop_full
 
 .loop:
-	cmp rcx, rdx
-	je .stop_full
     mov al, [rsi + rcx]
-    cmp byte [rdi + rcx], al
+    mov r8b, byte [rdi + rcx]
+    cmp r8b, 0
+    je .empty_first
+    cmp al, 0
+    je .empty_second
+    cmp r8b, al
     jl .stop_less
     jg .stop_greater
-    cmp byte [rdi + rcx], 0
-    je .stop
-    cmp al, 0
-    je .stop_less
     inc rcx ;Inc cmpt
     jmp .loop
 
@@ -37,5 +38,19 @@ strncmp:
 .stop_full:
 	mov rax, 0
 	ret
+
+.empty_first:
+    cmp al, 0
+    je .stop
+    movzx rax, al
+    mov r8, -1
+    imul rax, r8
+    ret
+
+.empty_second:
+    cmp r8b, 0
+    je .stop
+    movzx rax, r8b
+    ret
 
 section .data

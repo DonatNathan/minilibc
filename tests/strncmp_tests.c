@@ -29,5 +29,26 @@ Test (my_strncmp, zero_string)
     int (*my_strncmp)(const char *, const char *, size_t);
     handle = dlopen("./libasm.so", RTLD_LAZY);
     my_strncmp = dlsym(handle, "strncmp");
+    // printf("Real : '%d'\nMe : '%d'\n", strncmp("O", "T", 0), my_strncmp("O", "T", 0));
     cr_assert_eq(strncmp("O", "T", 0), my_strncmp("O", "T", 0));
+}
+
+Test (my_strncmp, empty_right)
+{
+    void *handle;
+    int (*my_strncmp)(const char *, const char *, size_t);
+    handle = dlopen("./libasm.so", RTLD_LAZY);
+    my_strncmp = dlsym(handle, "strncmp");
+    // printf("Real : '%d'\nMe : '%d'\n", strncmp("O", "", 3), my_strncmp("O", "", 3));
+    cr_assert_eq(strncmp("O", "", 3), my_strncmp("O", "", 3));
+}
+
+Test (my_strncmp, empty_left)
+{
+    void *handle;
+    int (*my_strncmp)(const char *, const char *, size_t);
+    handle = dlopen("./libasm.so", RTLD_LAZY);
+    my_strncmp = dlsym(handle, "strncmp");
+    // printf("Real : '%d'\nMe : '%d'\n", strncmp("", "T", 1), my_strncmp("", "T", 1));
+    cr_assert_eq(strncmp("", "T", 1), my_strncmp("", "T", 1));
 }

@@ -74,6 +74,6 @@ Test (my_strcasecmp, test_32)
     int (*my_strcasecmp)(const char *, const char *);
     handle = dlopen("./libasm.so", RTLD_LAZY);
     my_strcasecmp = dlsym(handle, "strcasecmp");
-    printf("Valid : '%d'\nInvalid : '%d'\n", strcasecmp("caw caw motherfuckers", "caw Caw"), my_strcasecmp("caw caw motherfuckers", "caw Caw"));
+    // printf("Valid : '%d'\nInvalid : '%d'\n", strcasecmp("caw caw motherfuckers", "caw Caw"), my_strcasecmp("caw caw motherfuckers", "caw Caw"));
     cr_assert_eq(strcasecmp("caw caw motherfuckers", "caw Caw"), my_strcasecmp("caw caw motherfuckers", "caw Caw"));
 }
