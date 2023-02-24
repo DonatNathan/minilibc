@@ -59,7 +59,7 @@ Test (my_strncmp, two_left)
     int (*my_strncmp)(const char *, const char *, size_t);
     handle = dlopen("./libasm.so", RTLD_LAZY);
     my_strncmp = dlsym(handle, "strncmp");
-    printf("Real : '%d'\nMe : '%d'\n", strncmp("a", "aa", 1), my_strncmp("a", "aa", 1));
+    // printf("Real : '%d'\nMe : '%d'\n", strncmp("a", "aa", 1), my_strncmp("a", "aa", 1));
     cr_assert_eq(strncmp("a", "aa", 1), my_strncmp("a", "aa", 1));
 }
 

@@ -81,21 +81,21 @@ Test (my_memcpy, zero_string)
 }
 
 // Why ?!
-// Test (my_memcpy, biggest)
-// {
-//     void *handle;
-//     void *(*my_memcpy)(void *, const void *, size_t);
-//     handle = dlopen("./libasm.so", RTLD_LAZY);
-//     my_memcpy = dlsym(handle, "memcpy");
-//     char *string1 = strdup("Salut");
-//     char *string2 = strdup("Salut");
-//     char *string3 = strdup("Toto le roi des imbéciles");
-//     memcpy(string1, string3, 13);
-//     my_memcpy(string2, string3, 13);
-//     printf("First : '%s'\nSecond : '%s'\n", string1, string2);
-//     int result = strcmp(string1, string2);
-//     cr_assert_eq(0, result);
-// }
+Test (my_memcpy, biggest)
+{
+    void *handle;
+    void *(*my_memcpy)(void *, const void *, size_t);
+    handle = dlopen("./libasm.so", RTLD_LAZY);
+    my_memcpy = dlsym(handle, "memcpy");
+    char *string1 = strdup("Salut");
+    char *string2 = strdup("Salut");
+    char *string3 = strdup("Toto le roi des imbéciles");
+    memcpy(string1, string3, 13);
+    my_memcpy(string2, string3, 13);
+    printf("First : '%s'\nSecond : '%s'\n", string1, string2);
+    int result = strcmp(string1, string2);
+    cr_assert_eq(0, result);
+}
 
 Test (my_memcpy, amazing_size)
 {

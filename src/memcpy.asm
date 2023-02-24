@@ -8,11 +8,13 @@ global memcpy
 
 memcpy:
 	xor rcx, rcx ;Set cmpt to 0
+	cmp rdx, 0
+	je .empty
 
 .loop:
-	mov al, [rsi + rcx] ;Get actual char
 	cmp rcx, rdx ;If end of cmpt
 	je .endset
+	mov al, [rsi + rcx] ;Get actual char
 	mov [rdi + rcx], al ;Set value of second arg
 	inc rcx ;Inc cmpt
 	jmp .loop
