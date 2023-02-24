@@ -9,6 +9,8 @@ strncmp:
     je .stop_full
 
 .loop:
+    cmp rcx, rdx
+    je .stop_full
     mov al, [rsi + rcx]
     mov r8b, byte [rdi + rcx]
     cmp r8b, 0
