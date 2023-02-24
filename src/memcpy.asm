@@ -22,7 +22,7 @@ memcpy:
 	ret
 
 .empty:
-	cmp byte rcx, rdx
+	cmp rcx, rdx
 	je .endset
 	mov byte [rdi + rcx], 0
 	inc rcx
