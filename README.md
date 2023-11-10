@@ -68,4 +68,6 @@ Branches | Lines
 
 ![image](https://github.com/DonatNathan/minilibc/assets/91681379/241c5f66-e493-4101-b6de-54debadcc2ce)
 
+## Notes
 
+One error and bye bye boni functions
